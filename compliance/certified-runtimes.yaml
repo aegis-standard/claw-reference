@@ -1,0 +1,7 @@
+certified_runtimes:
+  - name: "Claw Reference Runtime"
+    repository: "https://github.com/aegis-standard/claw-reference"
+    level: "L4"
+    certified_date: "2026-05-17"
+    evidence: "https://github.com/aegis-standard/claw-reference/tree/main/compliance"
+    status: "active"
