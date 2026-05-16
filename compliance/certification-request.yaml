@@ -1,0 +1,22 @@
+runtime:
+  name: "Claw Reference Runtime"
+  version: "1.0.0"
+  repository: "https://github.com/aegis-standard/claw-reference"
+
+certification:
+  claimed_level: "L4"
+  aef_version: "1.0"
+  test_suite_version: "1.0"
+
+test_results:
+  total: 12
+  passed: 12
+  failed: 0
+  date: "2026-05-17"
+  executor: "claw-reference/tests/test_compliance.py"
+
+evidence:
+  - RFC-0001 (Event Core Schema): passed
+  - RFC-0002 (Replay Semantics): passed
+  - RFC-0006 (Determinism L4): passed
+  - Full session L4 compliance: passed
