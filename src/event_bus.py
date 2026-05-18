@@ -3,6 +3,7 @@
 import json
 import uuid
 import hashlib
+import warnings
 from datetime import datetime, UTC
 from pathlib import Path
 from typing import Optional
@@ -85,6 +86,14 @@ class EventBus:
         # Append event to log file
         with open(self._log_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(event) + "\n")
+
+        # MCP Instrumentation normalization (parasitic, non-breaking)
+        try:
+            from mcp_bridge import normalize_event
+            normalized = normalize_event(event['action'], event['actor'], event['payload'], event_dict=event)
+            event.update(normalized)
+        except Exception as e:
+            warnings.warn(f"MCP normalization failed: {e}")
 
         self._last_event_id = event_id
         return event_id

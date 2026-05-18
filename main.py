@@ -200,6 +200,13 @@ def cmd_test():
 
 
 def interactive_loop():
+    # Check MCP Instrumentation availability
+    try:
+        from mcp_bridge import normalize_event
+        print("MCP Instrumentation ENABLED")
+    except Exception:
+        print("MCP Instrumentation UNAVAILABLE")
+
     print("Claw Interactive Shell (输入 help 查看命令，当前会话: 无)")
     while True:
         try:
@@ -237,6 +244,13 @@ def interactive_loop():
 
 
 def main():
+    # Check MCP Instrumentation availability (for non-interactive mode)
+    try:
+        from mcp_bridge import normalize_event
+        print("MCP Instrumentation ENABLED")
+    except Exception:
+        print("MCP Instrumentation UNAVAILABLE")
+
     if len(sys.argv) > 1:
         cmd = sys.argv[1].lower()
         if cmd == "test":
